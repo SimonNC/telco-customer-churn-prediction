@@ -167,3 +167,29 @@ streamlit run app/streamlit_app.py
 - Strong focus on **interpretability and decision-making**
 - Clean project structure and reusable code
 - End-to-end workflow from EDA to deployment
+
+---
+
+## 👤 About the Analyst
+
+## Simon Jorite  
+**Data Analyst | Analytics Engineer**  
+**Microsoft Power BI Certified (PL-300)**  
+
+Data Analyst focused on **business decision support**, with a strong background in **BI, analytics engineering, and applied machine learning**. I specialize in transforming complex, heterogeneous data into **reliable KPIs and actionable insights** for operational and strategic teams.
+
+### Experience & Approach
+Experienced across the full analytics lifecycle:
+- **Data preparation & quality** (Python, SQL, dbt)
+- **Analytical modeling** (star schema, BI-ready marts)
+- **Business KPI design & storytelling** (Power BI)
+- **Decision-oriented analytics**, including churn and retention use cases
+
+My work reflects a **production-oriented analytics approach**, aligned with real business constraints, data quality requirements, and stakeholder expectations.
+
+### Contact & Availability
+📍 **Location**: Lyon, France (Open to Hybrid / Remote)  
+🔗 **GitHub**: https://github.com/SimonNC  
+🔗 **LinkedIn**: https://www.linkedin.com/in/simonjorite  
+📧 **Email**: simon.jorite@gmail.com  
+
