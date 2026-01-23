@@ -1,2 +1,15 @@
-# telco-customer-churn-prediction
-End-to-end data science project on customer churn prediction, from business understanding and EDA to modeling and deployment with Streamlit.
+# Customer Churn Prediction
+
+## 📌 Contexte métier
+
+## 🎯 Objectif du projet
+
+## 📊 Données
+
+## 🧠 Approche
+
+## 📈 Résultats
+
+## 🚀 Application
+
+## 🔍 Limites & améliorations
