@@ -142,10 +142,10 @@ if predict_btn:
             "- Monitor risk changes (billing issues, service changes, tenure stage)"
         )
 
-    st.divider()
+    st.markdown("---")
     st.caption("Model: Random Forest pipeline (preprocessing + classifier) exported via joblib.")
 
-st.divider()
+st.markdown("---")
 
 st.markdown(
     """
@@ -155,6 +155,8 @@ st.markdown(
     </div>
     """,
     unsafe_allow_html=True
+)
+
 )
 
 
