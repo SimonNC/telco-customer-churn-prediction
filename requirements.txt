@@ -1,7 +1,8 @@
 pandas
+kagglehub
 numpy
 scikit-learn
 matplotlib
 seaborn
 streamlit
-EOF
+
