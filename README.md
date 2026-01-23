@@ -1,9 +1,23 @@
 # Telco Customer Churn Prediction
 
+[![Streamlit App](https://img.shields.io/badge/Live%20Demo-Streamlit-red)](https://telco-customer-churn-prediction-simonnc.streamlit.app/)
+
 ## 📌 Business Context
 Customer churn is a critical challenge for telecom companies, as acquiring new customers is significantly more expensive than retaining existing ones.
 
 This project focuses on predicting customer churn in order to proactively identify at-risk customers and support data-driven retention strategies.
+
+---
+
+## 🔗 Live Demo
+
+👉 **https://telco-customer-churn-prediction-simonnc.streamlit.app/**
+
+The deployed Streamlit application allows users to:
+- Simulate individual customer profiles
+- Estimate churn probability using a trained Random Forest model
+- Adjust the decision threshold based on business strategy
+- Receive actionable retention recommendations
 
 ---
 
@@ -13,7 +27,7 @@ Build an interpretable and production-ready binary classification model capable 
 ---
 
 ## 📊 Dataset
-- **Source**: Telco Customer Churn dataset (IBM / Kaggle)
+- **Source**: Telco Customer Churn dataset (IBM / [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn))
 - **Granularity**: One row per customer
 - **Target variable**: `Churn` (Yes / No)
 - **Churn rate**: ~26.5%
@@ -127,11 +141,9 @@ The Random Forest model was selected as the final model due to its superior reca
 
 ## 🚀 Streamlit Application
 
-A Streamlit app allows users to:
-- Input individual customer characteristics
-- Estimate churn probability
-- Adjust the decision threshold based on business strategy
-- Receive actionable retention recommendations
+The Streamlit app is connected directly to the trained pipeline (preprocessing + model) to ensure prediction consistency with the offline evaluation.
+
+🔗 **Live demo**: https://telco-customer-churn-prediction-simonnc.streamlit.app/
 
 ### Run the app locally
 ```bash
