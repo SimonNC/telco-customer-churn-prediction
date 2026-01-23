@@ -3,12 +3,12 @@
 ## 📌 Business Context
 Customer churn is a critical challenge for telecom companies, as acquiring new customers is significantly more expensive than retaining existing ones.
 
-This project aims to predict customer churn in order to identify at-risk customers and support data-driven retention strategies.
+This project focuses on predicting customer churn in order to proactively identify at-risk customers and support data-driven retention strategies.
 
 ---
 
 ## 🎯 Project Objective
-Build a binary classification model capable of predicting whether a customer is likely to churn, with the goal of prioritizing retention actions and reducing the overall churn rate.
+Build an interpretable and production-ready binary classification model capable of predicting whether a customer is likely to churn, with a strong focus on **recall** to avoid missing high-risk customers.
 
 ---
 
@@ -16,6 +16,7 @@ Build a binary classification model capable of predicting whether a customer is 
 - **Source**: Telco Customer Churn dataset (IBM / Kaggle)
 - **Granularity**: One row per customer
 - **Target variable**: `Churn` (Yes / No)
+- **Churn rate**: ~26.5%
 
 ---
 
@@ -30,6 +31,10 @@ telco-customer-churn-prediction/
 │   ├── 01_eda.ipynb
 │   ├── 02_feature_engineering.ipynb
 │   └── 03_modeling.ipynb
+├── src/
+│   └── data_prep.py
+├── models/
+│   └── churn_model_rf.joblib
 ├── app/
 │   └── streamlit_app.py
 ├── README.md
@@ -42,7 +47,6 @@ telco-customer-churn-prediction/
 ## ⚙️ Getting Started
 
 ### 1) Create and activate a virtual environment
-
 **Windows (Git Bash)**
 
 ```bash
@@ -61,11 +65,8 @@ pip install -r requirements.txt
 
 ---
 
-### 3) Download the dataset
-
-The dataset is downloaded programmatically using `kagglehub` in the EDA notebook and copied to `data/raw/`.
-
-If needed:
+### 3) Dataset acquisition
+The dataset is downloaded programmatically from Kaggle using `kagglehub` and stored locally in `data/raw/` to ensure reproducibility.
 
 ```bash
 pip install kagglehub
@@ -73,42 +74,84 @@ pip install kagglehub
 
 ---
 
-### 4) Run the notebooks
-
+### 4) Run notebooks
 ```bash
 jupyter notebook
 ```
 
 ---
 
-## 🧠 Approach
+## 🧠 Methodology
 
-- Business understanding and problem framing  
-- Exploratory Data Analysis (EDA) focused on churn drivers  
-- Feature engineering based on business insights  
-- Baseline and improved classification models  
-- Model evaluation using churn-oriented metrics  
-- Simple Streamlit application for customer scoring  
+1. **Exploratory Data Analysis (EDA)**  
+   Identify key churn drivers from a business perspective.
+
+2. **Feature Engineering**  
+   Business-driven feature selection, proper encoding, and leakage-safe preprocessing pipelines.
+
+3. **Modeling**
+   - Baseline: Logistic Regression (interpretable reference)
+   - Improved model: Random Forest (non-linear interactions)
+
+4. **Evaluation**
+   Metrics aligned with churn prevention use cases:
+   - ROC-AUC
+   - Recall on churners
+   - Confusion matrix analysis
+
+5. **Deployment**
+   Export of the final pipeline and integration into a Streamlit application.
 
 ---
 
 ## 📈 Key Insights (EDA)
 
-- Customers on month-to-month contracts exhibit significantly higher churn rates than those on one- or two-year contracts.
-- Churn risk is highest during the early months of the customer lifecycle.
-- The absence of Tech Support is associated with a substantially higher churn rate.
-- Among internet customers, Online Security appears to be a strong retention driver.
+- Customers on **month-to-month contracts** show significantly higher churn rates.
+- Churn risk is highest during the **early months** of the customer lifecycle.
+- The absence of **Tech Support** is strongly associated with higher churn.
+- Among internet customers, **Online Security** acts as a strong retention lever.
 
 ---
 
-## 🚀 Application
+## 🤖 Modeling Results
 
-A lightweight Streamlit application will allow users to estimate churn risk for individual customers.
+| Model | ROC-AUC | Recall (Churn) | Precision (Churn) |
+|------|--------|----------------|-------------------|
+| Logistic Regression (baseline) | ~0.80 | ~0.67 | ~0.52 |
+| Random Forest (final) | **0.84** | **0.73** | 0.56 |
+
+**Model selection rationale:**  
+The Random Forest model was selected as the final model due to its superior recall and overall discrimination, which better aligns with churn prevention objectives.
+
+---
+
+## 🚀 Streamlit Application
+
+A Streamlit app allows users to:
+- Input individual customer characteristics
+- Estimate churn probability
+- Adjust the decision threshold based on business strategy
+- Receive actionable retention recommendations
+
+### Run the app locally
+```bash
+streamlit run app/streamlit_app.py
+```
 
 ---
 
 ## 🔍 Limitations & Next Steps
 
-- Further feature engineering and modeling are required to quantify the relative importance of churn drivers.
-- Model performance will be evaluated using churn-oriented metrics (recall, precision, ROC-AUC).
-- Future improvements may include cost-sensitive modeling and threshold optimization.
+- Threshold tuning based on customer lifetime value and retention cost
+- Feature importance analysis for deeper business interpretability
+- Cost-sensitive or profit-based optimization
+- Monitoring model performance over time (data drift)
+
+---
+
+## 🧠 What This Project Demonstrates
+
+- Ability to translate a **business problem into a data science pipeline**
+- Strong focus on **interpretability and decision-making**
+- Clean project structure and reusable code
+- End-to-end workflow from EDA to deployment
