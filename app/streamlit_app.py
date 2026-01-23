@@ -144,3 +144,17 @@ if predict_btn:
 
     st.divider()
     st.caption("Model: Random Forest pipeline (preprocessing + classifier) exported via joblib.")
+
+st.divider()
+
+st.markdown(
+    """
+    <div style="text-align: center; font-size: 0.9em; color: gray;">
+        📂 <a href="https://github.com/TON_USERNAME/telco-customer-churn-prediction" target="_blank">
+        View source code on GitHub</a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+
