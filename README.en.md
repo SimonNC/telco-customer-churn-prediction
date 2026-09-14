@@ -1,6 +1,6 @@
 # Telco Customer Churn Prediction - ML Decision Support
 
-[🇫🇷 Version française](README.md)
+[🇫🇷 Version française](README.md) · [📅 Book a call](https://cal.clixius.com/simon/echange)
 
 [![Streamlit App](https://img.shields.io/badge/Live%20Demo-Streamlit-red)](https://telco-customer-churn-prediction-simonnc.streamlit.app/)
 
@@ -173,4 +173,4 @@ Data Analyst - [Microsoft Certified Power BI Data Analyst (PL-300)](https://lear
 - LinkedIn: [linkedin.com/in/simonjorite](https://www.linkedin.com/in/simonjorite)
 - Email: simon.jorite@gmail.com
 - Location: Lyon, France (Open to hybrid / remote)
-- Scheduling: [Book a 30-min exchange](https://calendly.com/simon-jorite/echange-da)
+- Scheduling: [Book a 30-min exchange](https://cal.clixius.com/simon/echange)
