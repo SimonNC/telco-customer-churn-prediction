@@ -1,107 +1,109 @@
-# Telco Customer Churn Prediction - ML Decision Support
+# Prédiction de churn client Telco - Aide à la décision ML
+
+[🇬🇧 English version](README.en.md)
 
 [![Streamlit App](https://img.shields.io/badge/Live%20Demo-Streamlit-red)](https://telco-customer-churn-prediction-simonnc.streamlit.app/)
 
-> **0.84 ROC-AUC, 0.73 recall on churners.** Business-oriented EDA on 7,043 customers, leakage-safe ML pipeline, and a deployed Streamlit app for retention simulation.
+> **0.84 ROC-AUC, 0.73 de recall sur les churners.** EDA orientée métier sur 7 043 clients, pipeline ML sans fuite de données, et application Streamlit déployée pour la simulation de rétention.
 
 ---
 
-## 📌 Business Context
+## 📌 Contexte métier
 
-Customer churn is a critical challenge for telecom companies: acquiring a new customer costs significantly more than retaining an existing one. The ability to **proactively identify at-risk customers** and support **data-driven retention strategies** is a direct business value driver.
+Le churn client est un enjeu critique pour les entreprises de télécommunications : acquérir un nouveau client coûte significativement plus cher que de fidéliser un client existant. La capacité à **identifier de manière proactive les clients à risque** et à soutenir des **stratégies de rétention data-driven** constitue un levier de valeur business direct.
 
-This project demonstrates how a Data Analyst can bridge **exploratory data analysis**, **statistical modeling**, and **actionable business recommendations** to address this problem end-to-end.
+Ce projet démontre comment un Data Analyst peut faire le lien entre **analyse exploratoire des données**, **modélisation statistique** et **recommandations métier actionnables** pour traiter ce problème de bout en bout.
 
 ---
 
-## 🔗 Live Demo
+## 🔗 Démo en ligne
 
 👉 **https://telco-customer-churn-prediction-simonnc.streamlit.app/**
 
-The deployed Streamlit application allows users to:
+L'application Streamlit déployée permet aux utilisateurs de :
 
-- Simulate individual customer profiles
-- Estimate churn probability using the trained Random Forest model
-- Adjust the decision threshold based on business strategy (cost of acquisition vs. retention)
-- Receive actionable retention recommendations
-
----
-
-## 🎯 Project Objective
-
-Build an interpretable, production-ready binary classification model capable of predicting customer churn, with a **recall-first strategy** to minimize missed high-risk customers.
-
-The focus is deliberately **business-oriented**: results are designed to support operational decisions, not to demonstrate academic ML techniques.
+- Simuler des profils clients individuels
+- Estimer la probabilité de churn à l'aide du modèle Random Forest entraîné
+- Ajuster le seuil de décision selon la stratégie métier (coût d'acquisition vs. rétention)
+- Recevoir des recommandations de rétention actionnables
 
 ---
 
-## 📊 Dataset
+## 🎯 Objectif du projet
 
-| Attribute | Value |
+Construire un modèle de classification binaire interprétable et prêt pour la production, capable de prédire le churn client, avec une **stratégie recall-first** pour minimiser les clients à haut risque manqués.
+
+L'approche est délibérément **orientée métier** : les résultats sont conçus pour soutenir des décisions opérationnelles, et non pour démontrer des techniques ML académiques.
+
+---
+
+## 📊 Jeu de données
+
+| Attribut | Valeur |
 |---|---|
 | **Source** | Telco Customer Churn (IBM / [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)) |
-| **Granularity** | 1 row = 1 customer |
-| **Size** | 7,043 customers |
-| **Target** | `Churn` (Yes / No) |
-| **Churn rate** | ~26.5% |
+| **Granularité** | 1 ligne = 1 client |
+| **Taille** | 7 043 clients |
+| **Cible** | `Churn` (Yes / No) |
+| **Taux de churn** | ~26,5% |
 
 ---
 
-## 🧠 Methodology
+## 🧠 Méthodologie
 
-### 1. Exploratory Data Analysis (EDA)
+### 1. Analyse exploratoire des données (EDA)
 
-Business-oriented analysis to identify key churn drivers before any modeling. The goal is to understand **why customers leave**, not just predict **who** will leave.
+Analyse orientée métier pour identifier les principaux facteurs de churn avant toute modélisation. L'objectif est de comprendre **pourquoi les clients partent**, pas seulement de prédire **qui** partira.
 
 ### 2. Feature Engineering
 
-Business-driven feature selection, proper encoding, and **leakage-safe preprocessing pipelines** to ensure model reliability in production.
+Sélection de variables guidée par le métier, encodage adapté, et **pipelines de prétraitement sans fuite de données** pour garantir la fiabilité du modèle en production.
 
-### 3. Modeling
+### 3. Modélisation
 
-| Model | ROC-AUC | Recall (Churn) | Precision (Churn) |
+| Modèle | ROC-AUC | Recall (Churn) | Precision (Churn) |
 |---|---|---|---|
-| Logistic Regression (baseline) | ~0.80 | ~0.67 | ~0.52 |
+| Logistic Regression (référence) | ~0.80 | ~0.67 | ~0.52 |
 | **Random Forest (final)** | **0.84** | **0.73** | 0.56 |
 
-**Model selection rationale**: Random Forest was selected for its superior recall and discrimination, aligned with churn prevention objectives where missing a high-risk customer is costlier than a false alert.
+**Choix du modèle** : Random Forest a été retenu pour son recall et son pouvoir discriminant supérieurs, alignés avec les objectifs de prévention du churn où manquer un client à haut risque coûte plus cher qu'une fausse alerte.
 
-### 4. Deployment
+### 4. Déploiement
 
-Final pipeline (preprocessing + model) exported and integrated into a Streamlit application ensuring prediction consistency with offline evaluation.
+Pipeline final (prétraitement + modèle) exporté et intégré dans une application Streamlit garantissant la cohérence des prédictions avec l'évaluation hors ligne.
 
 ---
 
-## 📈 Key Insights
+## 📈 Enseignements clés
 
-| Finding | Business Implication |
+| Constat | Implication métier |
 |---|---|
-| **Month-to-month contracts** show significantly higher churn | Contract commitment reduces churn risk |
-| Churn risk peaks during the **first months** of the customer lifecycle | Onboarding and early engagement are critical |
-| Absence of **Tech Support** strongly associated with higher churn | Service bundling as a retention lever |
-| **Online Security** acts as a strong retention driver among internet customers | Targeted upsell opportunity |
+| Les **contrats mensuels** présentent un churn significativement plus élevé | L'engagement contractuel réduit le risque de churn |
+| Le risque de churn culmine durant les **premiers mois** du cycle de vie client | L'onboarding et l'engagement précoce sont critiques |
+| L'absence de **Tech Support** est fortement associée à un churn plus élevé | Le bundling de services comme levier de rétention |
+| L'**Online Security** agit comme un puissant levier de rétention chez les clients internet | Opportunité d'upsell ciblé |
 
-These insights are **actionable without the model**: they inform product, pricing, and customer success strategies independently of ML predictions.
+Ces enseignements sont **actionnables sans le modèle** : ils orientent les stratégies produit, tarification et succès client indépendamment des prédictions ML.
 
 ---
 
-## 🗂️ Project Structure
+## 🗂️ Structure du projet
 
 ```
 telco-customer-churn-prediction/
 ├── data/
-│   ├── raw/                       # Raw dataset
-│   └── processed/                 # Cleaned data
+│   ├── raw/                       # Jeu de données brut
+│   └── processed/                 # Données nettoyées
 ├── notebooks/
-│   ├── 01_eda.ipynb               # Exploratory Data Analysis
+│   ├── 01_eda.ipynb               # Analyse exploratoire
 │   ├── 02_feature_engineering.ipynb
-│   └── 03_modeling.ipynb          # Model training & evaluation
+│   └── 03_modeling.ipynb          # Entraînement & évaluation du modèle
 ├── src/
-│   └── data_prep.py               # Reusable preprocessing
+│   └── data_prep.py               # Prétraitement réutilisable
 ├── models/
-│   └── churn_model_rf.joblib      # Trained model pipeline
+│   └── churn_model_rf.joblib      # Pipeline du modèle entraîné
 ├── app/
-│   └── streamlit_app.py           # Decision-support app
+│   └── streamlit_app.py           # Application d'aide à la décision
 ├── README.md
 ├── requirements.txt
 └── .gitignore
@@ -109,7 +111,7 @@ telco-customer-churn-prediction/
 
 ---
 
-## 🚀 Run Locally
+## 🚀 Exécution en local
 
 ```bash
 python -m venv .venv
@@ -117,58 +119,58 @@ source .venv/Scripts/activate   # Windows (Git Bash)
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# Run notebooks
+# Lancer les notebooks
 jupyter notebook
 
-# Run the Streamlit app
+# Lancer l'application Streamlit
 streamlit run app/streamlit_app.py
 ```
 
 ---
 
-## 🔍 Limitations & Next Steps
+## 🔍 Limites et pistes d'amélioration
 
-- Threshold tuning based on customer lifetime value and retention cost
-- Feature importance analysis for deeper business interpretability
-- Cost-sensitive or profit-based optimization
-- Monitoring model performance over time (data drift detection)
+- Ajustement du seuil en fonction de la valeur vie client et du coût de rétention
+- Analyse de l'importance des variables pour une interprétabilité métier plus poussée
+- Optimisation cost-sensitive ou basée sur le profit
+- Suivi de la performance du modèle dans le temps (détection de data drift)
 
 ---
 
-## 🎯 Skills Demonstrated
+## 🎯 Compétences démontrées
 
-This project demonstrates competencies aligned with **Data Analyst** market requirements:
+Ce projet démontre des compétences alignées avec les exigences du marché pour un poste de **Data Analyst** :
 
-| Competency | How it is demonstrated |
+| Compétence | Comment elle est démontrée |
 |---|---|
-| **Exploratory data analysis (EDA)** | Business-oriented analysis of 7,043 customers to identify churn drivers |
-| **Statistical modeling** | Logistic Regression baseline + Random Forest with recall-first strategy |
-| **Python** (Pandas, Scikit-learn) | End-to-end pipeline from raw data to deployed model |
-| **Data visualization** | Charts and findings designed to communicate with business stakeholders |
-| **Business needs analysis** | Problem framed from the operational perspective (retention cost vs. acquisition cost) |
-| **KPI design** | Churn rate, retention levers, and threshold tuning as decision-support metrics |
-| **Deployment** | Streamlit app for real-time customer simulation and retention strategy testing |
+| **Analyse exploratoire des données (EDA)** | Analyse orientée métier de 7 043 clients pour identifier les facteurs de churn |
+| **Modélisation statistique** | Référence Logistic Regression + Random Forest avec stratégie recall-first |
+| **Python** (Pandas, Scikit-learn) | Pipeline de bout en bout, des données brutes au modèle déployé |
+| **Visualisation de données** | Graphiques et résultats conçus pour communiquer avec les parties prenantes métier |
+| **Analyse des besoins métier** | Problème formulé du point de vue opérationnel (coût de rétention vs. coût d'acquisition) |
+| **Conception de KPI** | Taux de churn, leviers de rétention et ajustement de seuil comme métriques d'aide à la décision |
+| **Déploiement** | Application Streamlit pour la simulation client en temps réel et le test de stratégies de rétention |
 
 ---
 
-## 🔗 Related Projects
+## 🔗 Projets liés
 
-This project complements the portfolio alongside:
+Ce projet complète le portfolio aux côtés de :
 
-- 👉 [Olist E-commerce: End-to-End BI Solution](https://github.com/SimonNC/olist-data-analysis) (Python + Power BI dashboards)
+- 👉 [Olist E-commerce: End-to-End BI Solution](https://github.com/SimonNC/olist-data-analysis) (Python + tableaux de bord Power BI)
 - 👉 [Olist Analytics Engineering Pipeline](https://github.com/SimonNC/olist-dbt-duckdb) (SQL + dbt)
 
 ---
 
-## 👤 Author
+## 👤 Auteur
 
 **Simon Jorite**
-Data Analyst - [Microsoft Certified Power BI Data Analyst (PL-300)](https://learn.microsoft.com/en-us/users/simonjorite-4846/credentials/b2cc3310a92a9302)
+Data Analyst - [Certifié Microsoft Power BI Data Analyst (PL-300)](https://learn.microsoft.com/en-us/users/simonjorite-4846/credentials/b2cc3310a92a9302)
 
-15 years of experience in finance, operations, and e-commerce. I transform complex datasets into reliable KPIs and decision-ready dashboards.
+15 ans d'expérience en finance, opérations et e-commerce. Je transforme des jeux de données complexes en KPI fiables et en tableaux de bord prêts pour la décision.
 
-- GitHub: [github.com/SimonNC](https://github.com/SimonNC)
-- LinkedIn: [linkedin.com/in/simonjorite](https://www.linkedin.com/in/simonjorite)
-- Email: simon.jorite@gmail.com
-- Location: Lyon, France (Open to hybrid / remote)
-- Scheduling: [Book a 30-min exchange](https://calendly.com/simon-jorite/echange-da)
+- GitHub : [github.com/SimonNC](https://github.com/SimonNC)
+- LinkedIn : [linkedin.com/in/simonjorite](https://www.linkedin.com/in/simonjorite)
+- Email : simon.jorite@gmail.com
+- Localisation : Lyon, France (Ouvert à un poste hybride ou en télétravail)
+- Prise de RDV : [Réserver un échange de 30 min](https://calendly.com/simon-jorite/echange-da)
